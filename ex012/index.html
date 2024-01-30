@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Média do Aluno</title>
+    <style>
+        body {
+            font-family: monospace, sans-serif;
+        }
+
+        button {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Média do aluno</h1>
+        <button onclick="media()">Entrar com as notas</button>
+        <h2 class="analisando">Clique no botão acima para informar as notas do aluno.</h2>
+        <p class="media"></p>
+        <p class="informacaoFinal"></p>
+    </div>
+
+
+    <script>
+        function media() {
+            let analisando = window.document.querySelector('.analisando');
+            let media = window.document.querySelector('.media');
+            let informacaoFinal = window.document.querySelector('.informacaoFinal');
+
+            let nomeDoAluno = window.prompt('Qual é o nome do aluno?');
+            let primeiraNota = Number.parseFloat(window.prompt(`Primeira nota de ${nomeDoAluno}`));
+            let segundaNota = Number.parseFloat(window.prompt(`Segunda nota de ${nomeDoAluno}`));
+
+            let mediaFinal = (primeiraNota + segundaNota) / 2;
+
+            analisando.innerHTML = `Analisando a situação de ${nomeDoAluno}`
+
+            media.innerHTML = `Com as notas ${primeiraNota} e ${segundaNota}, <strong>a média é ${mediaFinal}</strong>`;
+
+            if (mediaFinal <= 3.0) {
+                informacaoFinal.innerHTML = 'Com a média abaixo de 3.0, o aluno está REPROVADO!';
+            }else if (mediaFinal <= 6.0) {
+                informacaoFinal.innerHTML = 'Com a média entre 3.0 e 6.0, o aluno está de RECUPERAÇÃO!';
+            }else {
+                informacaoFinal.innerHTML = 'Com a média acima de 6.0, o aluno está APROVADOR!';
+            }
+        }   
+    </script>
+</body>
+</html>

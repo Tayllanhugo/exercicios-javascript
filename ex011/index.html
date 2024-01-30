@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preço Mudou</title>
+    <style>
+        body {
+            font-family: monospace, sans-serif;
+        }
+
+        button {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Preço mudou</h1>
+        <button onclick="verificar()">Verificar</button>
+        <h2 class="analisando">Clique no botão acima para analisar a mudança de preço.</h2>
+        <p class="diferençaValores"></p>
+        <p class="informaçãoProduto"></p>
+        <p class="valorDoProduto"></p>
+        <p class="porcentagemDoValor"></p>
+    </div>
+
+
+    <script>
+        function verificar() {
+            let analisando = window.document.querySelector('.analisando');
+            let diferençaValores = window.document.querySelector('.diferençaValores');
+            let informaçãoProduto = window.document.querySelector('.informaçãoProduto');
+            let valorDoProduto = window.document.querySelector('.valorDoProduto');
+            let porcentagemDoValor = window.document.querySelector('.porcentagemDoValor');
+
+            let valorAnteriorDoProduto = Number.parseFloat(window.prompt('Qual era o preço anterior do produto?'));
+            let valorAtualDoProduto = Number.parseFloat(window.prompt('Qual é o preço atual do produto?'));
+
+
+
+            let diferençaDosValores = valorAnteriorDoProduto - valorAtualDoProduto;
+
+            let variaçãoPreçoPorcentagem = diferençaDosValores / valorAnteriorDoProduto * 100;
+
+            analisando.innerHTML = 'Analisando os valores informados...';
+
+            diferençaValores.innerHTML = `O produto custava R$ ${valorAnteriorDoProduto} e agora custa R$ ${valorAtualDoProduto}`;
+
+            if (valorAnteriorDoProduto < valorAtualDoProduto) {
+                informaçãoProduto.innerHTML = 'Hoje o produto está mais caro.'
+                valorDoProduto.innerHTML = `O preço subiu R$ ${diferençaDosValores} em relação ao preço anterior.`;
+                porcentagemDoValor.innerHTML = `Uma variação de ${variaçãoPreçoPorcentagem}% pra cima.`;
+            }else {
+                informaçãoProduto.innerHTML = 'Hoje o produto está mais barato.'
+                valorDoProduto.innerHTML = `O preço caiu R$ ${diferençaDosValores} em relação ao preço anterior.`;
+                porcentagemDoValor.innerHTML = `Uma variação de ${variaçãoPreçoPorcentagem}% pra cima.`;
+            }
+        }   
+    </script>
+</body>
+</html>
